@@ -1,6 +1,7 @@
 import {
-  leadInsertFromFormData,
+  leadInsertFromOrderFormInput,
   submitLead,
+  type OrderFormInput,
 } from "@/service/orderService";
 import type { Lead } from "@/types/orders";
 import { create } from "zustand";
@@ -11,7 +12,8 @@ type OrderState = {
   error: string | null;
   lastLead: Lead | null;
   reset: () => void;
-  submitFromFormData: (formData: FormData) => Promise<void>;
+  clearSubmitError: () => void;
+  submitOrder: (values: OrderFormInput) => Promise<void>;
 };
 
 export const useOrderStore = create<OrderState>((set) => ({
@@ -28,24 +30,27 @@ export const useOrderStore = create<OrderState>((set) => ({
       lastLead: null,
     }),
 
-  submitFromFormData: async (formData) => {
+  clearSubmitError: () => set({ error: null }),
+
+  submitOrder: async (values) => {
     set({ error: null, pending: true });
     try {
-      const result = await submitLead(leadInsertFromFormData(formData));
+      const result = await submitLead(leadInsertFromOrderFormInput(values));
       if (!result.ok) {
-        set({ pending: false, error: result.message });
+        set({ error: result.message });
         return;
       }
       set({
         submitted: true,
-        pending: false,
         error: null,
         lastLead: result.lead,
       });
     } catch (e) {
       const message =
         e instanceof Error ? e.message : "Не удалось отправить заявку.";
-      set({ pending: false, error: message });
+      set({ error: message });
+    } finally {
+      set({ pending: false });
     }
   },
 }));

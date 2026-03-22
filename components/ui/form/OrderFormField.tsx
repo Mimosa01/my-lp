@@ -1,16 +1,18 @@
 import type { ReactNode } from "react";
-import { orderFormLabelClass } from "./orderFormStyles";
+import { orderFormLabelClass } from "./styles/orderFormStyles";
 
 type OrderFormFieldProps = {
   id: string;
   label: string;
   children: ReactNode;
+  error?: string;
 };
 
 export default function OrderFormField({
   id,
   label,
   children,
+  error,
 }: OrderFormFieldProps) {
   return (
     <div className="mb-3">
@@ -18,6 +20,11 @@ export default function OrderFormField({
         {label}
       </label>
       {children}
+      {error ? (
+        <p className="mt-1 text-xs text-red-500" role="alert">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }

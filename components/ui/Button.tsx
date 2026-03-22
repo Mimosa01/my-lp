@@ -5,7 +5,7 @@ import clsx from "clsx";
 import Link from "next/link";
 
 const baseClass =
-  "items-center justify-center rounded-full font-mulish text-sm font-bold whitespace-nowrap transition-all duration-200";
+  "flex items-center justify-center rounded-full font-mulish text-sm font-bold whitespace-nowrap transition-all duration-200";
 
 const variantClass = {
   primary:

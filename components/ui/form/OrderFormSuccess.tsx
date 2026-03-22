@@ -1,4 +1,4 @@
-import { orderFormCardClass } from "./orderFormStyles";
+import { orderFormCardClass } from "./styles/orderFormStyles";
 
 export default function OrderFormSuccess() {
   return (

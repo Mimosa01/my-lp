@@ -1,6 +1,9 @@
+import type { OrderFormInput } from "@/components/ui/form/shemas/orderShema";
 import { ORDER_PACKAGE_OPTIONS } from "@/data/orderPackageOptions";
 import { supabase } from "@/lib/supabase";
 import type { Lead, LeadInsert } from "@/types/orders";
+
+export type { OrderFormInput };
 
 export type SubmitLeadResult =
   | { ok: true; lead: Lead }
@@ -19,6 +22,18 @@ function normalizeInsert(payload: LeadInsert): LeadInsert {
     occupation: trimOrNull(payload.occupation ?? undefined),
     service: trimOrNull(payload.service ?? undefined),
     message: trimOrNull(payload.message ?? undefined),
+  };
+}
+
+/** Из значений формы (после Zod / react-hook-form) в `LeadInsert`. */
+export function leadInsertFromOrderFormInput(input: OrderFormInput): LeadInsert {
+  const option = ORDER_PACKAGE_OPTIONS.find((o) => o.value === input.package);
+  return {
+    name: input.name,
+    contact: input.contact,
+    occupation: input.occupation,
+    service: option?.label ?? input.package,
+    message: input.details,
   };
 }
 
