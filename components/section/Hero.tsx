@@ -21,14 +21,12 @@ export default function Hero() {
     <section className={clsx(heroLayoutClass, heroGlowClass)}>
       <div className="reveal md:flex-1 md:max-w-[560px] md:px-0">
         <h1 className="mb-4 font-unbounded text-4xl font-black tracking-[-0.04em] leading-tight text-text">
-          Сайт для вашего
-          <br />
-          <span className="text-orange">бизнеса.</span>
+        Хватит отвечать на одни и те же
+          <span className="text-orange"> вопросы клиентам.</span>
         </h1>
         <p className="mb-8 max-w-[480px] text-base font-medium leading-relaxed text-muted">
-          Вы занимаетесь делом —{" "}
-          <strong className="font-medium text-text">клиенты находят вас сами</strong>. Заявки прямо в Telegram.
-          Никаких сложных настроек.
+          Показывает ваши работы, объясняет условия и принимает заявки сразу с деталями — 
+          <strong className="font-medium text-text">прямо в Telegram</strong>.
         </p>
         <div className="animation:fu .6s ease .24s both mb-8 flex gap-0 overflow-hidden rounded-lg border border-border">
           {PROOF_ITEMS.map(({ num, label }) => (
