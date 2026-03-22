@@ -1,26 +1,57 @@
 @import "tailwindcss";
+@import "../styles/animation.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  --bg:#fafaf8;
+  --surface:#f2f0eb;
+  --card:#ffffff;
+  --border:#e8e4de;
+  --border2:#d4cfc7;
+  --orange:#e8470a;
+  --orange-dim:rgba(232,71,10,0.08);
+  --orange-glow:rgba(232,71,10,0.18);
+  --text:#1a1814;
+  --muted:#8a8278;
+  --muted2:#c4bfb8;
+
+  --font-unbounded: 'Unbounded', sans-serif;
+  --font-mulish: 'Mulish', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+}
+
+@theme {
+  --color-orange: var(--orange);
+  --color-orange-dim: var(--orange-dim);
+  --color-orange-glow: var(--orange-glow);
+  --color-muted: var(--muted);
+  --color-muted2: var(--muted2);
+  --color-border: var(--border);
+  --color-border2: var(--border2);
+  --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+
+  --font-unbounded: var(--font-unbounded);
+  --font-mulish: var(--font-mulish);
+  --font-syne: var(--font-syne);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--orange)}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
 }
