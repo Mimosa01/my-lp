@@ -13,7 +13,7 @@ export const orderFormDefaultValues: DefaultValues<OrderFormInput> = {
   name: "",
   contact: "",
   occupation: "",
-  package: "landing",
+  package: "standart",
   details: "",
 };
 

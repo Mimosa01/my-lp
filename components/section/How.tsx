@@ -1,4 +1,4 @@
-import SectionTitle from "@/components/ui/SectionTitle";
+import SectionHeader from "@/components/ui/SectionHeader";
 import { HOW_STEPS } from "@/data/howSteps";
 
 export default function How() {
@@ -6,14 +6,14 @@ export default function How() {
     <section className="bg-bg py-[72px] md:py-24" id="how">
       <div className="mx-auto max-w-[1100px] px-5">
         <div className="reveal">
-          <SectionTitle
+          <SectionHeader
             eyebrow="Как это работает"
             title={
               <>
-                Сайт + бот = <span>заявки в телефон</span>
+                Сайт + телефон = <span>заявки</span>
               </>
             }
-            subtitle="Клиент нашёл вас — оставил заявку — она у вас в Telegram. Без пропущенных."
+            subtitle="Клиент нашёл вас — оставил заявку — она у вас на сайте. Без пропущенных."
           />
         </div>
 
@@ -31,7 +31,7 @@ export default function How() {
                   {title}
                 </h3>
                 <p className="text-[13px] leading-[1.65] text-muted">{body}</p>
-                <span className="mt-2 inline-block rounded-full border border-orange text-orange px-2.5 py-0.5 text-[11px] text-muted2">
+                <span className="mt-2 inline-block rounded-full border border-orange text-orange px-2.5 py-0.5 text-[11px]">
                   {tag}
                 </span>
               </div>

@@ -21,11 +21,10 @@ export default function Hero() {
     <section className={clsx(heroLayoutClass, heroGlowClass)}>
       <div className="reveal md:flex-1 md:max-w-[560px] md:px-0">
         <h1 className="mb-4 font-unbounded text-4xl font-black tracking-[-0.04em] leading-tight text-text">
-        Хватит объяснять цену каждому клиенту
-          <span className="text-orange"> заново</span>
+          <span className="text-orange">Инстаграм</span> — это не бизнес
         </h1>
         <p className="mb-8 max-w-[480px] text-base font-medium leading-relaxed text-muted">
-        Пора перестать продавать через переписку
+          Сделаю сайт где клиент сам записывается, сам считает цену и сразу платит. А ты просто приходишь и работаешь.
         </p>
         <div className="animation:fu .6s ease .24s both mb-8 flex gap-0 overflow-hidden rounded-lg border border-border">
           {PROOF_ITEMS.map(({ num, label }) => (

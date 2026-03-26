@@ -119,7 +119,7 @@ export default function OrderFormFields({ disabled }: Props) {
         {disabled ? "Отправка…" : "Отправить заявку"}
       </Button>
       <p className="mt-2.5 text-center text-xs leading-normal text-muted2">
-        Отвечу быстро · Работаю по всей России
+        Нажимая &quot;Отправить заявку&quot;, вы соглашаетесь с обработкой персональных данных
       </p>
     </>
   );

@@ -1,16 +1,16 @@
 import type { ReactNode } from "react";
 
-type SectionTitleProps = {
+type SectionHeaderProps = {
   eyebrow: string;
   title: ReactNode;
   subtitle?: string;
 };
 
-export default function SectionTitle({
+export default function SectionHeader({
   eyebrow,
   title,
   subtitle,
-}: SectionTitleProps) {
+}: SectionHeaderProps) {
   return (
     <div className="transition-all duration-600 ease-in-out">
       <p className="mb-2.5 text-[10px] font-bold tracking-[0.18em] text-orange uppercase">

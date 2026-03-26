@@ -7,7 +7,7 @@ type PkgCardFeatureListProps = {
 
 export default function PkgCardFeatureList({ items }: PkgCardFeatureListProps) {
   return (
-    <ul className="mb-5 flex list-none flex-col gap-0">
+    <ul className="mb-5 flex flex-1 list-none flex-col gap-0">
       {items.map((item) => (
         <PkgCardFeatureItem key={item.text} emphasized={item.emphasized}>
           {item.text}

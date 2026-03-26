@@ -12,6 +12,7 @@ const variantClass = {
     "bg-orange text-white hover:opacity-80 focus-visible:bg-orange-hover active:scale-95",
   outline:
     "border border-orange bg-transparent text-orange hover:bg-orange/12 hover:border-orange focus-visible:border-orange-glow active:scale-95",
+  custom: "",
 } as const;
 
 const sizeClass = {

@@ -1,6 +1,18 @@
 export const ORDER_PACKAGE_OPTIONS = [
-  { value: "landing", label: "Лендинг (от 10 000 ₽)" },
-  { value: "site-bot", label: "Сайт + Telegram-бот (от 20 000 ₽)" },
-  { value: "admin", label: "Сайт с админкой (от 30 000 ₽)" },
-  { value: "undecided", label: "Ещё не решил — обсудим" },
+  { 
+    value: "standart", 
+    label: "Свой сайт под ключ (15 000 ₽)" 
+  },
+  { 
+    value: "subscription", 
+    label: "Бизнес на автопилоте (5 000 ₽ + подписка)" 
+  },
+  { 
+    value: "widgets", 
+    label: "Индивидуальный расчет (сайт + доп. виджеты)" 
+  },
+  { 
+    value: "undecided", 
+    label: "Нужна консультация — помогите выбрать" 
+  },
 ] as const;

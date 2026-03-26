@@ -3,7 +3,7 @@ import {
   submitLead,
   type OrderFormInput,
 } from "@/service/orderService";
-import type { Lead } from "@/types/orders";
+import type { Lead } from "@/lib/types/orders";
 import { create } from "zustand";
 
 type OrderState = {

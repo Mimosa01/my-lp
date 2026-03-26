@@ -1,5 +1,5 @@
 import { PKG_PACKAGES } from "@/data/pkgFeatureItems";
-import SectionTitle from "@/components/ui/SectionTitle";
+import SectionHeader from "@/components/ui/SectionHeader";
 import PkgCard from "../ui/pkg/PkgCard";
 
 export default function Packages() {
@@ -10,7 +10,7 @@ export default function Packages() {
     >
       <div className="mx-auto max-w-[1100px] px-5">
         <div className="reveal">
-          <SectionTitle
+          <SectionHeader
             eyebrow="Что предлагаю"
             title={
               <>

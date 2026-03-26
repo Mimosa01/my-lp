@@ -1,7 +1,7 @@
 import type { OrderFormInput } from "@/components/ui/form/shemas/orderShema";
 import { ORDER_PACKAGE_OPTIONS } from "@/data/orderPackageOptions";
 import { supabase } from "@/lib/supabase";
-import type { Lead, LeadInsert } from "@/types/orders";
+import type { Lead, LeadInsert } from "@/lib/types/orders";
 
 export type { OrderFormInput };
 

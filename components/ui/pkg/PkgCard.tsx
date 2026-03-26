@@ -18,22 +18,24 @@ export default function PkgCard({ pkg, onClick }: PkgCardProps) {
 
   return (
     <PkgCardShell featured={featured}>
-      {featured ? <PkgCardBadge /> : null}
-      <PkgCardHeading
-        name={pkg.name}
-        price={pkg.price}
-        period={pkg.period}
-        description={pkg.description}
-      />
-      <PkgCardFeatureList items={pkg.features} />
-      <Button
-        variant={variant === "outline" ? "outline" : "primary"}
-        className={clsx("w-full")}
-        href={onClick ? undefined : "#order"}
-        onClick={onClick}
-      >
-        Заказать
-      </Button>
+      <div className="flex h-full flex-col">
+        {featured ? <PkgCardBadge /> : null}
+        <PkgCardHeading
+          name={pkg.name}
+          price={pkg.price}
+          period={pkg.period}
+          description={pkg.description}
+        />
+        <PkgCardFeatureList items={pkg.features} />
+        <Button
+          variant={variant === "outline" ? "outline" : "primary"}
+          className={clsx("mt-auto w-full")}
+          href={onClick ? undefined : "#order"}
+          onClick={onClick}
+        >
+          Заказать
+        </Button>
+      </div>
     </PkgCardShell>
   );
 }
