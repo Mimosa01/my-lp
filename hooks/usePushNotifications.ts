@@ -95,6 +95,23 @@ export function usePushNotifications() {
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(vapidKey),
         });
+      } else {
+        // После смены VAPID/деплоя старая подписка может "существовать",
+        // но не доставлять push. Принудительно пересоздаём её.
+        try {
+          await fetch("/api/push/unsubscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ endpoint: subscription.endpoint }),
+          });
+        } catch {
+          // Неблокирующий best-effort.
+        }
+        await subscription.unsubscribe();
+        subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(vapidKey),
+        });
       }
 
       const response = await fetch("/api/push/subscribe", {
