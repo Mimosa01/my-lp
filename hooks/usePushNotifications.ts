@@ -66,6 +66,18 @@ export function usePushNotifications() {
     setMessage(null);
 
     try {
+      const isIOS = /iPad|iPhone|iPod/.test(window.navigator.userAgent);
+      const isStandalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        (window.navigator as Navigator & { standalone?: boolean }).standalone ===
+          true;
+      if (isIOS && !isStandalone) {
+        setMessage(
+          "На iOS push работает только после «Добавить на экран Домой» и открытия установленного приложения.",
+        );
+        return;
+      }
+
       await navigator.serviceWorker.register("/sw.js");
       const permissionResult = await Notification.requestPermission();
       setPermission(permissionResult);

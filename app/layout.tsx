@@ -17,6 +17,12 @@ const mulish = Mulish({
 export const metadata: Metadata = {
   title: "Сайт для самозанятых — заявки прямо в Telegram",
   description: "Делаю простые сайты для мастеров. Показывают работы, отвечают на вопросы и собирают заявки без лишних переписок.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Портфолио",
+    statusBarStyle: "default",
+  },
   openGraph: {
     title: "Сайт для самозанятых",
     description: "Заявки без лишних переписок",
