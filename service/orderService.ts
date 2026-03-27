@@ -60,11 +60,9 @@ export async function submitLead(
     return { ok: false, message: "Укажите имя и способ связи." };
   }
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("leads")
-    .insert(row)
-    .select("*")
-    .single();
+    .insert(row);
 
   if (error) {
     return { ok: false, message: error.message };
@@ -76,10 +74,9 @@ export async function submitLead(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         lead: {
-          id: data.id,
-          name: data.name,
-          contact: data.contact,
-          service: data.service,
+          name: row.name,
+          contact: row.contact,
+          service: row.service ?? null,
         },
       }),
     });
@@ -87,5 +84,16 @@ export async function submitLead(
     // Не блокируем UX формы из-за ошибок push.
   }
 
-  return { ok: true, lead: data as Lead };
+  return {
+    ok: true,
+    lead: {
+      id: 0,
+      name: row.name,
+      contact: row.contact,
+      occupation: row.occupation ?? null,
+      service: row.service ?? null,
+      message: row.message ?? null,
+      created_at: new Date().toISOString(),
+    } as Lead,
+  };
 }
