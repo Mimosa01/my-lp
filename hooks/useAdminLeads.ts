@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
 import type { Lead } from "@/lib/types/orders";
 
 export type AdminLeadRow = Pick<
@@ -35,21 +34,26 @@ export function useAdminLeads() {
     let isMounted = true;
 
     async function loadLeads() {
-      const { data, error: fetchError } = await supabase
-        .from("leads")
-        .select("id, name, contact, service, created_at")
-        .order("created_at", { ascending: false });
+      const response = await fetch("/api/admin/leads", {
+        method: "GET",
+        cache: "no-store",
+      });
+      const result = (await response.json()) as {
+        ok: boolean;
+        message?: string;
+        leads?: Pick<Lead, "id" | "name" | "contact" | "service" | "created_at">[];
+      };
 
       if (!isMounted) return;
 
-      if (fetchError) {
-        setError(fetchError.message);
+      if (!response.ok || !result.ok) {
+        setError(result.message ?? "Не удалось загрузить клиентов.");
         setLeads([]);
         setLoading(false);
         return;
       }
 
-      const rows = ((data ?? []) as Pick<
+      const rows = ((result.leads ?? []) as Pick<
         Lead,
         "id" | "name" | "contact" | "service" | "created_at"
       >[]).map((lead) => ({
