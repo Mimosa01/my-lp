@@ -28,7 +28,6 @@ export const PKG_PACKAGES: readonly PkgCardContent[] = [
     buttonVariant: "outline",
     features: [
       { text: "Портфолио, ЧаВо и форма заявки", emphasized: true },
-      { text: "1 полезный виджет (напр. Калькулятор)", emphasized: true },
       { text: "База клиентов и рассылки в кармане", emphasized: true },
       { text: "Уведомления о заявках", emphasized: false },
       { text: "Помощь с доменом и хостингом", emphasized: false },
