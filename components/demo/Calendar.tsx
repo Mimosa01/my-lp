@@ -38,14 +38,17 @@ const services: Service[] = [
 const generateTimeSlots = (): TimeSlot[] => {
   const slots: TimeSlot[] = [];
   for (let hour = 9; hour <= 20; hour++) {
+    // Детерминированная доступность, чтобы SSR и hydration совпадали.
+    const hourAvailable = hour % 3 !== 0;
+    const halfHourAvailable = (hour + 1) % 4 !== 0;
     slots.push({
       time: `${hour.toString().padStart(2, '0')}:00`,
-      available: Math.random() > 0.3, // Для демо рандомная доступность
+      available: hourAvailable,
     });
     if (hour !== 20) {
       slots.push({
         time: `${hour.toString().padStart(2, '0')}:30`,
-        available: Math.random() > 0.3,
+        available: halfHourAvailable,
       });
     }
   }
