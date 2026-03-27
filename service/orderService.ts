@@ -63,10 +63,29 @@ export async function submitLead(
   const { data, error } = await supabase
     .from("leads")
     .insert(row)
+    .select("*")
+    .single();
 
   if (error) {
     return { ok: false, message: error.message };
   }
 
-  return { ok: true, lead: data as unknown as Lead };
+  try {
+    await fetch("/api/push/notify-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        lead: {
+          id: data.id,
+          name: data.name,
+          contact: data.contact,
+          service: data.service,
+        },
+      }),
+    });
+  } catch {
+    // Не блокируем UX формы из-за ошибок push.
+  }
+
+  return { ok: true, lead: data as Lead };
 }

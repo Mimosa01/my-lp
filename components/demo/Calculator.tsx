@@ -248,7 +248,7 @@ export default function PriceCalculator() {
   const needsHours = config.services.some(s => s.unit === 'hour');
 
   return (
-    <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-xl bg-white shadow-xl sm:rounded-2xl">
+    <div className="mx-auto w-full h-full max-w-6xl overflow-hidden rounded-xl bg-white shadow-xl sm:rounded-2xl">
       {/* Header */}
       <div className="bg-linear-to-r from-blue-600 to-indigo-600 px-4 py-4 sm:px-6">
         <h2 className="text-xl font-bold text-white sm:text-2xl">

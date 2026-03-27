@@ -3,6 +3,7 @@ import BookingCalendar from "../demo/Calendar";
 import PriceCalculator from "../demo/Calculator";
 import BeforeAfterSlider from "../demo/BeforeAfterSlider";
 import AdminDashboard from "../demo/Dashboard";
+import CardCTA from "../demo/CardCTA";
 
 export default function Portfolio() {
   return (
@@ -27,6 +28,9 @@ export default function Portfolio() {
           </div>
           <div className="md:col-span-1 md:row-span-2">
             <BeforeAfterSlider />
+          </div>
+          <div className="md:col-2 md:row-span-1">
+            <CardCTA />
           </div>
           <div className="md:col-span-2 md:row-span-2">
             <AdminDashboard />
