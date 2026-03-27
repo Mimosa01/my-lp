@@ -1,13 +1,9 @@
 import SectionHeader from "@/components/ui/SectionHeader";
-import dynamic from "next/dynamic";
 import BookingCalendar from "../demo/Calendar";
 import PriceCalculator from "../demo/Calculator";
 import BeforeAfterSlider from "../demo/BeforeAfterSlider";
 import CardCTA from "../demo/CardCTA";
-
-const AdminDashboard = dynamic(() => import("../demo/Dashboard"), {
-  ssr: false,
-});
+import AdminDashboard from "../demo/Dashboard";
 
 export default function Portfolio() {
   return (
