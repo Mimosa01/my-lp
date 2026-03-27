@@ -17,6 +17,7 @@ export default function AdminPage() {
     message: pushMessage,
     subscribe,
     unsubscribe,
+    testNotification,
   } = usePushNotifications();
 
   const handleCopyContact = async (leadId: number, contact: string) => {
@@ -61,6 +62,14 @@ export default function AdminPage() {
             className="rounded-md border border-border2 px-2.5 py-1 text-xs text-text hover:bg-surface disabled:opacity-50"
           >
             Отключить push
+          </button>
+          <button
+            type="button"
+            onClick={testNotification}
+            disabled={!supported || pushLoading}
+            className="rounded-md border border-border2 px-2.5 py-1 text-xs text-text hover:bg-surface disabled:opacity-50"
+          >
+            Тест уведомления
           </button>
         </div>
         {pushMessage ? (

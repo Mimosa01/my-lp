@@ -147,6 +147,33 @@ export function usePushNotifications() {
     }
   }, [supported]);
 
+  const testNotification = useCallback(async () => {
+    if (!supported) {
+      setMessage("Push-уведомления не поддерживаются.");
+      return;
+    }
+    if (Notification.permission !== "granted") {
+      setMessage("Сначала выдайте разрешение на уведомления.");
+      return;
+    }
+
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      await registration.showNotification("Тестовое уведомление", {
+        body: "Локальная проверка показа уведомления в браузере.",
+        icon: "/favicon.ico",
+        data: { url: "/admin" },
+      });
+      setMessage("Тестовое уведомление отправлено локально.");
+    } catch (error) {
+      const text =
+        error instanceof Error
+          ? error.message
+          : "Не удалось показать тестовое уведомление.";
+      setMessage(text);
+    }
+  }, [supported]);
+
   return {
     hydrated,
     supported,
@@ -156,5 +183,6 @@ export function usePushNotifications() {
     message,
     subscribe,
     unsubscribe,
+    testNotification,
   };
 }
