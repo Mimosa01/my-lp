@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import { FAQ_ITEMS } from "@/data/faqItems";
-import AccordeonItem from "./AccordeonItem";
+import AccordeonItem from "./AccordionItem";
 
-export default function Accardeon() {
+export default function Accardion() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (

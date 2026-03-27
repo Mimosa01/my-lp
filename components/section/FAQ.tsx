@@ -1,5 +1,5 @@
 import SectionTitle from "@/components/ui/SectionHeader";
-import Accardeon from "@/components/ui/accardeon/Accardeon";
+import Accardeon from "@/components/ui/accardeon/Accardion";
 
 export const FAQ = () => {
   return (

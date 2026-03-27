@@ -390,23 +390,25 @@ const RevenueChart = ({ appointments }: RevenueChartProps) => {
         </div>
       </div>
       
-      <div className="flex h-48 items-end gap-2">
+      <div className="overflow-hidden rounded-lg">
+        <div className="flex h-48 items-end gap-1 px-1">
         {revenueByDate.map((revenue, index) => {
           const height = (revenue / maxRevenue) * 100;
           return (
-            <div key={index} className="flex h-full flex-1 flex-col items-center justify-end gap-2 overflow-hidden">
+            <div key={index} className="flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-1 overflow-hidden">
               <div className="w-full overflow-hidden rounded-t-lg bg-purple-100" style={{ height: `${Math.max(height, 2)}%` }}>
                 <div
                   className="w-full bg-purple-600 transition-all duration-500"
                   style={{ height: '100%' }}
                 />
               </div>
-              <span className="text-xs text-gray-500 origin-left">
+              <span className="w-full truncate text-center text-[10px] leading-none text-gray-500">
                 {dates[index].slice(5)}
               </span>
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
